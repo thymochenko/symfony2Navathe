@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\TrabalhaEm" table="trabalha_em">
+    <indexes>
+      <index name="IDX_3A503809FE76BF21" columns="fcpf"/>
+      <index name="IDX_3A503809EEC5E77B" columns="pnr"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="horas" type="decimal" column="horas" precision="3" scale="1" nullable="false"/>
+    <many-to-one field="pnr" target-entity="Projeto">
+      <join-columns>
+        <join-column name="pnr" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="fcpf" target-entity="Funcionario">
+      <join-columns>
+        <join-column name="fcpf" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Funcionario" table="funcionario">
+    <indexes>
+      <index name="IDX_7510A3CFF5EAECD7" columns="dnr"/>
+      <index name="IDX_7510A3CF19C1B535" columns="cpf_supervisor"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="pnome" type="string" column="pnome" length="15" nullable="false"/>
+    <field name="mnicial" type="string" column="mnicial" length="1" nullable="true"/>
+    <field name="unome" type="string" column="unome" length="15" nullable="false"/>
+    <field name="cpf" type="string" column="cpf" length="11" nullable="false"/>
+    <field name="datanasc" type="date" column="datanasc" nullable="true"/>
+    <field name="endereco" type="string" column="endereco" length="30" nullable="true"/>
+    <field name="sexo" type="string" column="sexo" length="1" nullable="true"/>
+    <field name="salario" type="decimal" column="salario" precision="10" scale="2" nullable="true"/>
+    <many-to-one field="cpfSupervisor" target-entity="Funcionario">
+      <join-columns>
+        <join-column name="cpf_supervisor" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="dnr" target-entity="Departamento">
+      <join-columns>
+        <join-column name="dnr" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

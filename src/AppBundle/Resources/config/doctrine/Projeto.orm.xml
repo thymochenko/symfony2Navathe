@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Projeto" table="projeto">
+    <indexes>
+      <index name="IDX_A0559D94B602C934" columns="dnum"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="projeto_projnome_key" columns="projnome"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="projnome" type="string" column="projnome" length="15" nullable="false"/>
+    <field name="projlocal" type="string" column="projlocal" length="15" nullable="true"/>
+    <many-to-one field="dnum" target-entity="Departamento">
+      <join-columns>
+        <join-column name="dnum" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

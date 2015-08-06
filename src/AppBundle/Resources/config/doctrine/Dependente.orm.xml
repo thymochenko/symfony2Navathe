@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Dependente" table="dependente">
+    <indexes>
+      <index name="IDX_3EDA8DDCFE76BF21" columns="fcpf"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="nomeDependente" type="string" column="nome_dependente" length="15" nullable="false"/>
+    <field name="sexo" type="string" column="sexo" length="1" nullable="true"/>
+    <field name="datanasc" type="date" column="datanasc" nullable="true"/>
+    <field name="parentesco" type="string" column="parentesco" length="8" nullable="true"/>
+    <many-to-one field="fcpf" target-entity="Funcionario">
+      <join-columns>
+        <join-column name="fcpf" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

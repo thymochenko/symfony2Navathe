@@ -1,0 +1,5 @@
+{% for funcionario in entity %}
+<h2>id: {{ funcionario.id }} :</h2>
+<p>Sobrenome: {{ funcionario.unome }}</p>
+<p>Data nasc: {{ funcionario.datanasc|date('d-m-Y') }}</p>
+{% endfor %}

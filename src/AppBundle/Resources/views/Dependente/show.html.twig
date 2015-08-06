@@ -1,0 +1,44 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Dependente</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Nomedependente</th>
+                <td>{{ entity.nomeDependente }}</td>
+            </tr>
+            <tr>
+                <th>Sexo</th>
+                <td>{{ entity.sexo }}</td>
+            </tr>
+            <tr>
+                <th>Datanasc</th>
+                <td>{{ entity.datanasc|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Parentesco</th>
+                <td>{{ entity.parentesco }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('dependente') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('dependente_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

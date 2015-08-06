@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Departamento" table="departamento">
+    <indexes>
+      <index name="IDX_40E497EB5A874A1A" columns="cpf_gerente"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="departamento_dnome_key" columns="dnome"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="dnome" type="string" column="dnome" length="15" nullable="false"/>
+    <field name="dnumero" type="integer" column="dnumero" nullable="false"/>
+    <field name="dataInicioGerente" type="date" column="data_inicio_gerente" nullable="true"/>
+    <many-to-one field="cpfGerente" target-entity="Funcionario">
+      <join-columns>
+        <join-column name="cpf_gerente" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

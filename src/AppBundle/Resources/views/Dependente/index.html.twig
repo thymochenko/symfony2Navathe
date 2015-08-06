@@ -1,0 +1,47 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Dependente list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Nomedependente</th>
+                <th>Sexo</th>
+                <th>Datanasc</th>
+                <th>Parentesco</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('dependente_show', { 'id': entity.id }) }}">{{ entity.nomeDependente }}</a></td>
+                <td>{{ entity.sexo }}</td>
+                <td>{% if entity.datanasc %}{{ entity.datanasc|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.parentesco }}</td>
+                <td>{{ entity.id }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('dependente_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('dependente_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('dependente_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}
